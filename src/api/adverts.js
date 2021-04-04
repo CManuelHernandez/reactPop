@@ -1,8 +1,8 @@
 import client from './client';
 
-const advertsBaseUrl = '/api/v1';
+const advertsBaseUrl = '/api';
 
 export const getLatestAdverts = () => {
-  const url = `${advertsBaseUrl}/adverts`;
+  const url = `${advertsBaseUrl}/v1/adverts`;
   return client.get(url);
 };
