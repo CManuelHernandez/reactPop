@@ -1,5 +1,5 @@
 import React from 'react';
-// import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 // import { ReactComponent as Icon } from '../../assets/twitter.svg';
 import './Header.css';
@@ -14,14 +14,14 @@ const Header = ({ isLogged, onLogout, ...props }) => {
     
   return (
     <header className='header' {...props}>
-      {/* <Link to="/"> */}
+      <Link to="/">
       <div className="header-logo">
         
       </div>
-      {/* </Link> */}
+      </Link>
       <nav className="header-nav">
         <Button
-          //   as={Link}
+          as={Link}
           to="/adverts"
           variant="primary"
           className="header-button"
@@ -37,7 +37,7 @@ const Header = ({ isLogged, onLogout, ...props }) => {
           </Button>
         ) : (
           <Button
-            // as={Link}
+            as={Link}
             to="/login"
             className="header-button"
           >
