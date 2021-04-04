@@ -1,13 +1,13 @@
 import React from 'react';
 import './NewAdvertPage.css';
+import Layout from '../../layout/Layout';
 
-const NewAdvertPage = () => {
+const NewAdvertPage = props => {
     return (
-        <div className="newAdvertPage">
-        <hr/>
-        <h1>NewAdvertPage</h1>           
-        </div>
-    )
-}
+        <Layout title="newAdvertPage" {...props}>
+            <div>NewAdvertPage</div>
+        </Layout>
+    );
+};
 
 export default NewAdvertPage;

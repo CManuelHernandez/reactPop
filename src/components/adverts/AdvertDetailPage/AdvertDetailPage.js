@@ -1,12 +1,12 @@
 import React from 'react';
 import './AdvertDetailPage.css';
+import Layout from '../../layout/Layout';
 
 const AdvertDetailPage = () => {
     return (
-        <div className="advertsDetailPage">
-        <hr/>
-            <h1>AdvertDetailPage.js</h1>
-        </div>
+        <Layout title="advertsDetailPage">
+            <div>AdvertDetailPage</div>
+        </Layout>
     )
 }
 

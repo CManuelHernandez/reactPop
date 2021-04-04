@@ -1,6 +1,10 @@
 import React from 'react';
 import './LoginForm.css';
 
+import Button from '../../shared/Button';
+import FormField from '../../shared/FormField';
+
+
 function LoginForm({ onSubmit, isLoading }) {
     const [credentials, setCredentials] = React.useState({
       email: '',
@@ -8,13 +12,10 @@ function LoginForm({ onSubmit, isLoading }) {
     });
   
     const handleChange = event => {
-      setCredentials(oldCredentials => {
-        const newCredentials = {
-          ...oldCredentials,
-          [event.target.name]: event.target.value,
-        };
-        return newCredentials;
-      });
+      setCredentials(oldCredentials => ({
+        ...oldCredentials,
+        [event.target.name]: event.target.value,
+        }));
     };
   
     const handleSubmit = event => {
@@ -22,20 +23,20 @@ function LoginForm({ onSubmit, isLoading }) {
       onSubmit(credentials);
     };
   
-    const { email: username, password } = credentials;
+    const { email, password } = credentials;
   
     return (
       <form className="loginForm" onSubmit={handleSubmit}>
-        <input
+        <FormField
           type="text"
           name="email"
-          label="phone, email or username"
+          label="email or username"
           className="loginForm-field"
-          value={username}
-          // onChange={handleUsernameChange}
+          value={email}
+          // onChange={handleEmailChange}
           onChange={handleChange}
         />
-        <input
+        <FormField
           type="password"
           name="password"
           label="password"
@@ -44,14 +45,14 @@ function LoginForm({ onSubmit, isLoading }) {
           // onChange={handlePasswordChange}
           onChange={handleChange}
         />
-        <button
+        <Button
           type="submit"
           className="loginForm-submit"
           variant="primary"
-          disabled={isLoading || !username || !password}
+          disabled={isLoading || !email || !password}
         >
           Log in
-        </button>
+        </Button>
       </form>
     );
   }
