@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Button } from '../../shared';
 import { logout } from '../../../api/auth';
 
-const AuthButton = ({ className, isLogged, onLogout }) => {
+const AuthButton = ({ isLogged, onLogout }) => {
   const handleLogoutClick = () => {
     logout().then(onLogout);
   };
@@ -15,7 +16,7 @@ const AuthButton = ({ className, isLogged, onLogout }) => {
         children: 'Log in',
       };
 
-  return <Button className={className} {...props} />;
+  return <Button {...props} />;
 };
 
 AuthButton.propTypes = {
