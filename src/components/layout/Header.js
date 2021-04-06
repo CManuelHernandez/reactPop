@@ -1,24 +1,23 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-
-// import { ReactComponent as Icon } from '../../assets/twitter.svg';
+import { ReactComponent as Icon } from '../../assets/home-icon.svg';
 import './Header.css';
 import Button from '../shared/Button';
 import AuthButton from '../auth/AuthButton';
 
 const Header = ({ isLogged, onLogout, ...props }) => {
   return (
-    <header className='header' {...props}>
+    <header className='header-logo' {...props}>
       <Link to="/">
         <div className="header-logo">
-          {/* logo */}
+          <Icon width="32" height="32" />
         </div>
       </Link>
       <nav className="header-nav">
         <Button
           as={NavLink}
           activeClassName="active"
-          to="/advert"
+          to="/advert/new"
           variant="primary"
           className="header-button"
         >
