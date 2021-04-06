@@ -56,6 +56,7 @@ a {
   display: flex;
   justify-content: flex-end;
   margin: 0.40rem;
+  border-top: solid 1px var(--maincolor);
 }
 .ad-price p{
   font-size: 1.5rem;
@@ -66,12 +67,15 @@ a {
   display: flex;
   justify-content: center;
   border-radius: 5px;
-  color: var(--maincolor);
+  border-top: solid 1px var(--maincolor);
+  border-radius: 0rem;
 }
 .ad-state p{
   padding: 0 0.5rem 0 0.5rem;
   border: solid 1px var(--maincolor);
   font-size: 1.2rem;
+  color: aliceblue;
+  background-color: var(--maincolor);
   border-top-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
 }
