@@ -4,6 +4,7 @@ import Layout from '../../layout/Layout';
 import NoImg from '../../../assets/noimg.png';
 import Button from '../../shared/Button';
 import ConfirmationAux from '../../shared/ConfirmationAux';
+import { useHistory } from 'react-router';
 import './AddDetailPage.css';
 
 
@@ -13,6 +14,7 @@ const AddDetailPage = ({...props}) => {
   const addId = props.match.params.id;
   const baseUrl = process.env.REACT_APP_API_BASE_URL;
   const [confirmation, setConfirmation] = React.useState(false);
+  const history = useHistory();
 
   const handleClickConfirmation = () => {
     setConfirmation((oldValue) => !oldValue);
@@ -21,8 +23,14 @@ const AddDetailPage = ({...props}) => {
   React.useEffect(() => {
     getAdd(addId)
       .then((addvert) => setAdd(addvert))
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        if (error.statusCode === 404) {
+          return history.push('/404');
+        }
+      });
   }, []);
+  
 
   return (
     <Layout title="Deta" {...props}>

@@ -18,7 +18,6 @@ function LoginPage({ onLogin }) {
     if (isLogged.current) {
       onLogin();
       const { from } = location.state || { from: { pathname: '/' } };
-      // const from = location.state ? location.state.from : {pathname: '/'}
 
       history.replace(from);
     }
@@ -26,7 +25,6 @@ function LoginPage({ onLogin }) {
 
   React.useEffect(() => {
     if (firstTime) {
-      // Do things only the first time
       firstTime.current = false;
     }
   });
