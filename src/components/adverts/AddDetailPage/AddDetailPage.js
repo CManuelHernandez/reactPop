@@ -33,7 +33,7 @@ const AddDetailPage = ({...props}) => {
   
 
   return (
-    <Layout title="Deta" {...props}>
+    <Layout title="Add on Detail" {...props}>
       <div className="add-detail-list-container">
         <div className="ad-detail">
           <div className="posts-list">

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Header from './Header';
+import Footer from './Footer'
 import './Layout.css';
 
 function Layout({ children, title, ...props }) {
@@ -12,8 +13,7 @@ function Layout({ children, title, ...props }) {
         <h2 className="layout-title bordered">{title}</h2>
         <section className="layout-content">{children}</section>
       </main>
-      <hr/>
-      <footer className="layout-footer bordered">Footer</footer>
+      <Footer />
     </div>
   );
 }
