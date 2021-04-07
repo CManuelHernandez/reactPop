@@ -38,3 +38,8 @@ export const getAdd = (id) => {
   const url = `${addsBaseUrl}/adverts/${id}`;
   return client.get(url);
 };
+
+export const deleteAdd = (id) => {
+  const url = `${addsBaseUrl}/adverts/${id}`;
+  return client.delete(url);
+};
