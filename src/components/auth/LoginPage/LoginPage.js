@@ -31,7 +31,7 @@ function LoginPage({ onLogin }) {
   
     return (
       <div className="loginPage">
-        <h1 className="loginPage-title">Log in to ReactPo</h1>
+        <h1 className="loginPage-title">Log in to ReactPoP</h1>
         <LoginForm onSubmit={handleSubmit} isLoading={isLoading} />
         {error && (
           <div onClick={resetError} className="loginPage-error">

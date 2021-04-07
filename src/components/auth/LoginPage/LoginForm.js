@@ -30,7 +30,7 @@ function LoginForm({ onSubmit, isLoading }) {
         <FormField
           type="text"
           name="email"
-          label="email or username"
+          label="Email :"
           className="loginForm-field"
           value={email}
           // onChange={handleEmailChange}
@@ -39,7 +39,7 @@ function LoginForm({ onSubmit, isLoading }) {
         <FormField
           type="password"
           name="password"
-          label="password"
+          label="Password :"
           className="loginForm-field"
           value={password}
           // onChange={handlePasswordChange}

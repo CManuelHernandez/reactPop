@@ -1,0 +1,25 @@
+#uploadFileButton{
+    display: inline-block;
+    padding: 0rem 40%;
+    width: 310px;
+    cursor: pointer;
+}
+fieldset {
+    display: flex;
+    justify-content: center;
+    border: 0;
+}
+select {
+    overflow:hidden;
+    width: 100px;
+    text-align-last: center
+}
+.createNewAddForm{
+  display: flex;
+  flex-direction: column;
+  padding: 10px 15px 0 15px;
+}
+
+.form-button {
+    color:blue;
+}

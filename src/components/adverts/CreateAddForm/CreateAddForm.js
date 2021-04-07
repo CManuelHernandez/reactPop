@@ -2,6 +2,7 @@ import React from 'react';
 import { getTags } from '../../../api/adds';
 import FormField from '../../shared/FormField';
 import Button from '../../shared/Button';
+import './CreateAddForm.css';
 
 const CreateAddForm = ({ ...props }) => {
     const [inputValues, setInputValues] = React.useState({
@@ -52,9 +53,6 @@ const [tags, setTags] = React.useState([]);
   const handleSubmit = (event) => {
     inputValues.price = inputValues.price * 1;
     inputValues.sale = !!inputValues.sale;
-    // !inputValues.photo
-    //   ? (inputValues.photo = placeholderImage)
-    //   : null;
     event.preventDefault();
     props.onSubmit(inputValues);
     setInputValues({
@@ -68,24 +66,23 @@ const [tags, setTags] = React.useState([]);
 
   return (
     <form className="createNewAddForm" onSubmit={handleSubmit}>
-      <FormField
-        type="text"
-        name="name"
-        label="Name"
-        value={inputValues.name}
-        className="createNewAddForm-field"
-        onChange={handleChange}
-        autoFocus
-      />
-      <FormField
-        type="number"
-        name="price"
-        label="Price"
-        value={inputValues.price}
-        className="createNewAddForm-field"
-        onChange={handleChange}
-      />
-
+        <FormField
+          type="text"
+          name="name"
+          label="Name: "
+          value={inputValues.name}
+          className="createNewAddForm-field"
+          onChange={handleChange}
+          autoFocus
+        />
+        <FormField
+          type="number"
+          name="price"
+          label="Price: "
+          value={inputValues.price}
+          className="createNewAddForm-field"
+          onChange={handleChange}
+        />
       <label>Purpose</label>
       <fieldset>
         <label>
@@ -110,14 +107,13 @@ const [tags, setTags] = React.useState([]);
         </label>
       </fieldset>
 
-      {/* TAGS xxx */}
       <label>Category
         <fieldset>
           <select
             value={inputValues.tags}
             multiple={true}
-            onChange={(e) => {
-              handleSelect(e.target.selectedOptions);
+            onChange={(event) => {
+            handleSelect(event.target.selectedOptions);
             }}
           >
             {tags.map((tag) => (
@@ -129,16 +125,19 @@ const [tags, setTags] = React.useState([]);
         </fieldset>
       </label>
 
-      {/* FOTO */}
       <input
         type="file"
         id="uploadFileButton"
         onChange={handleChangeUploadImage}
-      ></input>
+      >  
+      </input>
 
-      {/* BOTÓN xxx */}
-
-      <Button onClick={handleSubmit}>Publish</Button>
+      <Button 
+        className="form-button" 
+        onClick={handleSubmit}
+      >
+        Publish
+      </Button>
     </form>
   );
 };

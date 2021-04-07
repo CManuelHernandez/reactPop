@@ -1,18 +1,8 @@
-
-:root{
-  --maincolor: #009473;
-}
-
-body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: rgba(0, 148, 115, 0.7);
-}
-
 a {
   color: var(--maincolor);
 }
 a:hover {
-  color: rgba(83, 126, 98, 0.1);
+  color: rgba(83, 126, 98, 0);
 }
 .add-list-container{
   display: flex;
@@ -32,10 +22,6 @@ a:hover {
   border-top-left-radius: 2rem;
   border-bottom-right-radius: 2rem;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-}
-.ad-data{
-  display: flex;
-  flex-direction: column; 
 }
 .ad-image img{
   width: 16rem;

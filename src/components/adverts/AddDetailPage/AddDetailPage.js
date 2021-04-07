@@ -3,6 +3,7 @@ import { getAdd } from '../../../api/adds';
 import Layout from '../../layout/Layout';
 import NoImg from '../../../assets/noimg.png';
 import Button from '../../shared/Button';
+import './AddDetailPage.css';
 
 
 
@@ -21,10 +22,10 @@ const AddDetailPage = ({...props}) => {
   return (
     <>
       <Layout title="Deta" {...props}>
-      <div className="add-list-container">
-      <div className="add">
+      <div className="add-detail-list-container">
+      <div className="ad-detail">
               <div className="posts-list">
-              <div className="ad-image">
+              <div className="ad-detail-image">
                 <img src={add.photo ? `${baseUrl}${add.photo}` : NoImg} />
               </div>
               <div className="ad-info">
@@ -37,6 +38,7 @@ const AddDetailPage = ({...props}) => {
                 <div className="ad-decription">
                   <p><strong>Category:</strong> {add.tags}</p>
                 </div>
+                <hr/>
                 <div className="ad-price">
                   <p>{add.price} €</p> 
                 </div>
