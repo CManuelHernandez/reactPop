@@ -4,8 +4,9 @@ import './App.css';
 
 import { LoginPage } from './components/auth';
 
-import { CreateNewAddPage, AddDetailPage, AddListPage } from './components/adverts'
+import { CreateNewAddPage, AddDetailPage, AddListPage, Page404 } from './components/adverts'
 import { Switch, Route, Redirect } from 'react-router';
+
 
 import { useRouteMatch } from "react-router-dom";
 
@@ -37,15 +38,7 @@ function App({ isInitiallyLogged }) {
           <AddListPage isLogged={isLogged} onLogout={handleLogout} />
         </Route>
         <Route path="/404">
-          <div
-            style={{
-              textAlign: 'center',
-              fontSize: 48,
-              fontWeight: 'bold',
-            }}
-          >
-            404 | Not found page
-          </div>
+          <Page404 isLogged={isLogged} onLogout={handleLogout} />
         </Route>
         <Route>
           <Redirect to="/404" />
