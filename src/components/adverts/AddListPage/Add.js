@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import NoImg from '../../../assets/noimg.png';
 
 const Add = (props) => {
-  const handleAddId = () => {};
   const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
   return (
@@ -16,7 +15,7 @@ const Add = (props) => {
             <li key={add.id} className="ad">
               <div className="posts-list">
               <div className="ad-image">
-                <img src={add.photo ? `${baseUrl}${add.photo}` : NoImg} />
+                <img src={add.photo ? `${baseUrl}${add.photo}` : NoImg} alt={add.name} />
               </div>
               <div className="ad-info">
                 <div className="ad-main-info">
@@ -32,11 +31,9 @@ const Add = (props) => {
                 <div className="ad-price">
                   <p>{add.price.toFixed(2).replace('.', ',')} €</p> 
                 </div>
-
                 <Link to={`/advert/${add.id}`}>
                   <Button>See in Detail</Button>
-                </Link>
-                        
+                </Link>                      
                 </div> 
               </div>
             </li>

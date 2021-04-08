@@ -38,7 +38,7 @@ const AddDetailPage = ({...props}) => {
         <div className="ad-detail">
           <div className="posts-list">
             <div className="ad-detail-image">
-              <img src={add.photo ? `${baseUrl}${add.photo}` : NoImg} />
+              <img src={add.photo ? `${baseUrl}${add.photo}` : NoImg} alt={add.name}/>
             </div>
             <div className="ad-info">
               <div className="ad-main-info">
