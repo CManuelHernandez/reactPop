@@ -22,12 +22,18 @@ const EmptyList = () => {
     );
   };
 
-const AddListPage = ({ ...props }) => {
-    const [addList, setAddList] = React.useState([]);
-  
-    React.useEffect(() => {
-      getAddList().then(setAddList);//
-    }, []);
+function AddListPage({ ...props }) {
+
+  const [addList, setAdverts] = React.useState([]);
+
+React.useEffect(() => {
+  getAddList().then(adverts => {
+      // reverse order so that the new ones appear first
+      return adverts.sort((advert1, advert2) => {
+          return advert1.createdAt > advert2.createdAt ? -1 : 0;
+      });
+  }).then(setAdverts);
+}, []);
   
     return (
       <Layout title="React-Pop" {...props}>
