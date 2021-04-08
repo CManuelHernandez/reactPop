@@ -2,7 +2,7 @@ import React from 'react';
 import ProtoTypes from 'prop-types';
 import './App.css';
 
-import { LoginPage } from './components/auth';
+import { LoginPage, PrivateRoute } from './components/auth';
 
 import { CreateNewAddPage, AddDetailPage, AddListPage, Page404 } from './components/adverts'
 import { Switch, Route, Redirect } from 'react-router';
@@ -22,21 +22,20 @@ function App({ isInitiallyLogged }) {
   return (
     <div className="App">
       <Switch>
-        {/* <Route path="/advert/:advertId" component={AdvertDetailPage} /> */}
-        <Route path="/advert/new" component={CreateNewAddPage}>
-          <CreateNewAddPage isLogged={isLogged} onLogout={handleLogout} />
-        </Route>
-        <Route path="/advert/:id" component={AddDetailPage} >
-            <AddDetailPage match={match} isLogged={isLogged} onLogout={handleLogout}/> 
-        </Route> 
         <Route path="/login">
           {({ history }) => (
             <LoginPage onLogin={handleLogin} history={history}/>
           )}
         </Route>
-        <Route exact path="/">
+        <PrivateRoute isLogged={isLogged} path="/advert/new">
+          <CreateNewAddPage isLogged={isLogged} onLogout={handleLogout} />
+        </PrivateRoute>
+        <PrivateRoute  isLogged={isLogged} path="/advert/:id">
+            <AddDetailPage match={match} isLogged={isLogged} onLogout={handleLogout}/> 
+        </PrivateRoute> 
+        <PrivateRoute isLogged={isLogged} exact path="/">
           <AddListPage isLogged={isLogged} onLogout={handleLogout} />
-        </Route>
+        </PrivateRoute>
         <Route path="/404">
           <Page404 isLogged={isLogged} onLogout={handleLogout} />
         </Route>
