@@ -1,27 +1,22 @@
 import React from 'react';
 import LoginForm from './LoginForm';
 import { login } from '../../../api/auth';
-import { useHistory, useLocation } from 'react-router';
 import './LoginPage.css';
 
-function LoginPage({ onLogin }) {
+function LoginPage({ onLogin, history }) {
   const [error, setError] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
   const isLogged = React.useRef(false);
   const firstTime = React.useRef(true);
   
   const resetError = React.useCallback(() => setError(), []);
-  const history = useHistory();
-  const location = useLocation();
 
   React.useEffect(() => {
     if (isLogged.current) {
       onLogin();
-      const { from } = location.state || { from: { pathname: '/' } };
-
-      history.replace(from);
+      history.push('/');
     }
-  });
+  }, [isLogged.current, onLogin]);
 
   React.useEffect(() => {
     if (firstTime) {

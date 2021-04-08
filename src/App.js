@@ -30,9 +30,9 @@ function App({ isInitiallyLogged }) {
             <AddDetailPage match={match} isLogged={isLogged} onLogout={handleLogout}/> 
         </Route> 
         <Route path="/login">
-          {() =>
-            isLogged ? <Redirect to="/" /> : <LoginPage onLogin={handleLogin} />
-          }
+          {({ history }) => (
+            <LoginPage onLogin={handleLogin} history={history}/>
+          )}
         </Route>
         <Route exact path="/">
           <AddListPage isLogged={isLogged} onLogout={handleLogout} />
