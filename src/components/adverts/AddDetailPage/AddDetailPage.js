@@ -4,22 +4,27 @@ import Layout from '../../layout/Layout';
 import NoImg from '../../../assets/noimg.png';
 import Button from '../../shared/Button';
 import ConfirmationAux from '../../shared/ConfirmationAux';
+import Tags from '../Tags';
 import { useHistory } from 'react-router';
 import './AddDetailPage.css';
 
-
-
 const AddDetailPage = ({...props}) => {
-  const [add, setAdd] = React.useState({});
+  const [add, setAdd] = React.useState({
+    id:'',
+    createdAt: '',
+    name: '',
+    sale: '',
+    price: '',
+    tags: '',
+  });
   const addId = props.match.params.id;
   const baseUrl = process.env.REACT_APP_API_BASE_URL;
   const [confirmation, setConfirmation] = React.useState(false);
   const history = useHistory();
-
+  
   const handleClickConfirmation = () => {
     setConfirmation((oldValue) => !oldValue);
   };
-
   React.useEffect(() => {
     getAdd(addId)
       .then((addvert) => setAdd(addvert))
@@ -30,9 +35,9 @@ const AddDetailPage = ({...props}) => {
         }
       });
   }, []);
-  
-
+    
   return (
+    
     <Layout title="Add on Detail" {...props}>
       <div className="add-detail-list-container">
         <div className="ad-detail">
@@ -48,7 +53,8 @@ const AddDetailPage = ({...props}) => {
                 <p>{add.sale ? 'On sale' : 'Purchase'}</p>
               </div>
               <div className="ad-decription">
-                <p><strong>Category:</strong> {add.tags}</p>
+                <p><strong>Category:</strong></p>
+                <Tags tagsArray={add.tags} />
               </div>
               <hr/>
               <div className="ad-price">

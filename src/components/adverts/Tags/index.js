@@ -1,1 +1,1 @@
-export { defaut } from './Tags';
+export { default } from './Tags';

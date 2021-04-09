@@ -2,6 +2,7 @@ import React from 'react';
 import { getTags } from '../../../api/adds';
 import FormField from '../../shared/FormField';
 import Button from '../../shared/Button';
+import SelectTag from '../../shared/SelectTag';
 import './CreateAddForm.css';
 
 const CreateAddForm = ({ ...props }) => {
@@ -24,10 +25,19 @@ const [tags, setTags] = React.useState([]);
 }, []);
 
   const handleChange = (event) => {
-    setInputValues((oldValues) => ({
-      ...oldValues,
+    setInputValues( oldValue => {
+      const newValue = event.target ?
+      {
+      ...oldValue,
       [event.target.name]: event.target.value,
-    }));
+      } :
+      {
+      ...oldValue,
+      tags: event.length ? event : ''
+      }
+
+      return newValue;
+  });
   };
 
   const handleSelect = (selectedItems) => {
@@ -106,25 +116,10 @@ const [tags, setTags] = React.useState([]);
           />
         </label>
       </fieldset>
-
-      <label>Category
-        <fieldset>
-          <select
-            value={inputValues.tags}
-            multiple={true}
-            onChange={(event) => {
-            handleSelect(event.target.selectedOptions);
-            }}
-          >
-            {tags.map((tag) => (
-              <option key={tag} value={tag}>
-                {tag}
-              </option>
-            ))}
-          </select>
-        </fieldset>
-      </label>
-
+      <SelectTag 
+        handleChange={handleChange} 
+        setTagsForNew={setTags}
+      />
       <input
         type="file"
         id="uploadFileButton"

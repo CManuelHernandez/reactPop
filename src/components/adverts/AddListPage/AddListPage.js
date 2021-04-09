@@ -23,8 +23,9 @@ const EmptyList = () => {
   };
 
 function AddListPage({ ...props }) {
+  console.log('addlistProps', props)
 
-  const [addList, setAdverts] = React.useState([]);
+  const [addList, setAddList] = React.useState([]);
 
 React.useEffect(() => {
   getAddList().then(adverts => {
@@ -32,7 +33,7 @@ React.useEffect(() => {
       return adverts.sort((advert1, advert2) => {
           return advert1.createdAt > advert2.createdAt ? -1 : 0;
       });
-  }).then(setAdverts);
+  }).then(setAddList);
 }, []);
   
     return (
