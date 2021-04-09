@@ -4,7 +4,9 @@ import storage from '../utils/storage';
 export const login = credentials => {
   return client.post('/api/auth/login', credentials).then(({ accessToken }) => {
     configureClient({ accessToken });
-    storage.set('auth', accessToken);
+    if (credentials.remember) {
+      storage.set('auth', accessToken);
+    }
   });
 };
 

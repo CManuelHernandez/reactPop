@@ -1,20 +1,22 @@
 import React from 'react';
 import './LoginForm.css';
 
-import Button from '../../shared/Button';
-import FormField from '../../shared/FormField';
+import { Button, FormField, Checkbox } from '../../shared';
 
 
 function LoginForm({ onSubmit, isLoading }) {
     const [credentials, setCredentials] = React.useState({
       email: '',
       password: '',
+      remember: false,
     });
   
     const handleChange = event => {
       setCredentials(oldCredentials => ({
         ...oldCredentials,
-        [event.target.name]: event.target.value,
+        [event.target.name]: event.target.name === 'remember' 
+        ? 
+        event.target.checked : event.target.value
         }));
     };
   
@@ -33,7 +35,6 @@ function LoginForm({ onSubmit, isLoading }) {
           label="Email :"
           className="loginForm-field"
           value={email}
-          // onChange={handleEmailChange}
           onChange={handleChange}
         />
         <FormField
@@ -42,8 +43,14 @@ function LoginForm({ onSubmit, isLoading }) {
           label="Password :"
           className="loginForm-field"
           value={password}
-          // onChange={handlePasswordChange}
           onChange={handleChange}
+        />
+         <Checkbox 
+         className={'checkbox'}
+         name={'remember'}
+         text={'Remember me'}
+         disabled={!credentials.email || !credentials.password}
+         onChange={handleChange}
         />
         <Button
           type="submit"
