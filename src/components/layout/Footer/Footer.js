@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <footer>
             <div className="copyright">
-                <p>React-Pop 2020 - CManuel Hernández</p>
+                <p>React-Pop 2021 - CManuel Hernández</p>
             </div>
             <div className="social">
                 <ExternalLink href="http://localhost:3000/" className="support">Contact Us</ExternalLink>

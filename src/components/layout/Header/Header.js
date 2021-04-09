@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { ReactComponent as Icon } from '../../assets/home-icon.svg';
+import { ReactComponent as Icon } from '../../../assets/home-icon.svg';
+import Button from '../../shared/Button';
+import AuthButton from '../../auth/AuthButton';
 import './Header.css';
-import Button from '../shared/Button';
-import AuthButton from '../auth/AuthButton';
 
 const Header = ({ isLogged, onLogout, ...props }) => {
   return (

@@ -1,6 +1,4 @@
 import React from 'react';
-// import classNames from 'classnames';
-
 import './FormField.css';
 
 function FormField({ label, ...props }) {

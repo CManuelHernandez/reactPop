@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { deleteAdd } from '../../api/adds';
-import Button from './Button';
+import { deleteAdd } from '../../../api/adds';
+import Button from '.././Button';
 import './ConfirmationAux.css';
 
 const ConfirmationAux = (props) => {
