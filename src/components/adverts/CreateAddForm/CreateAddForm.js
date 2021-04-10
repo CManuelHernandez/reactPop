@@ -40,17 +40,6 @@ const [tags, setTags] = React.useState([]);
   });
   };
 
-  const handleSelect = (selectedItems) => {
-    const tags = [];
-    for (let i = 0; i < selectedItems.length; i++) {
-      tags.push(selectedItems[i].value);
-    }
-    setInputValues((oldValues) => ({
-      ...oldValues,
-      tags: tags,
-    }));
-  };
-
   const handleChangeUploadImage = (event) => {
     if (event.target.files.length) {
       setInputValues((oldValues) => ({
