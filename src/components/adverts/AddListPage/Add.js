@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Button from '../../shared/Button';
 import { Link } from 'react-router-dom';
 import Tags from '../Tags';

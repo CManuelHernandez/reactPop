@@ -1,8 +1,6 @@
 import React from 'react';
 import { getTags } from '../../../api/adds';
-import FormField from '../../shared/FormField';
-import Button from '../../shared/Button';
-import SelectTag from '../../shared/SelectTag';
+import { FormField, Button } from '../../shared';
 import './CreateAddForm.css';
 
 const CreateAddForm = ({ ...props }) => {
@@ -40,6 +38,18 @@ const [tags, setTags] = React.useState([]);
   });
   };
 
+  const handleSelect = (selectedItems) => {
+    const tags = [];
+    for (let i = 0; i < selectedItems.length; i++) {
+      tags.push(selectedItems[i].value);
+    }
+    setInputValues((oldValues) => ({
+      ...oldValues,
+      tags: tags,
+    }));
+  };
+
+
   const handleChangeUploadImage = (event) => {
     if (event.target.files.length) {
       setInputValues((oldValues) => ({
@@ -63,8 +73,9 @@ const [tags, setTags] = React.useState([]);
     });
   };
 
+
   return (
-    <form className="createNewAddForm" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
         <FormField
           type="text"
           name="name"
@@ -85,30 +96,41 @@ const [tags, setTags] = React.useState([]);
       <label>Purpose</label>
       <fieldset>
         <label>
-          Sell
+          Selling
           <input
             name="onSaleAdd"
             value={true}
             {...onSaleInputProps}
-            className="createNewAddForm-radio"
             onChange={handleChange}
           />
         </label>
         <label>
-          Buy
+          For Purchase
           <input
-            name="onSaleAdd"
+            name="buyAdd"
             value={false}
             {...onSaleInputProps}
-            className="createNewAddForm-radio"
             onChange={handleChange}
           />
         </label>
       </fieldset>
-      <SelectTag 
-        handleChange={handleChange} 
-        setTagsForNew={setTags}
-      />
+      <label>Category
+        <fieldset>
+          <select
+            value={inputValues.tags}
+            multiple={true}
+            onChange={(event) => {
+            handleSelect(event.target.selectedOptions);
+            }}
+          >
+            {tags.map((tag) => (
+              <option key={tag} value={tag}>
+                {tag}
+              </option>
+            ))}
+          </select>
+        </fieldset>
+      </label>
       <input
         type="file"
         id="uploadFileButton"
@@ -119,6 +141,7 @@ const [tags, setTags] = React.useState([]);
       <Button 
         className="form-button" 
         onClick={handleSubmit}
+        disabled={ !inputValues.name || !inputValues.price } 
       >
         Publish
       </Button>
