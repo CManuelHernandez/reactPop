@@ -6,9 +6,10 @@ import './CreateAddForm.css';
 const CreateAddForm = ({ ...props }) => {
     const [inputValues, setInputValues] = React.useState({
         name: '',
-        price: '',
+        price: 0,
         tags: [],
-        photo: '',
+        sale: true,
+        photo: null,
     });
 
 const [onSaleValue, onSaleInputProps] = useRadioButtons('sale');
