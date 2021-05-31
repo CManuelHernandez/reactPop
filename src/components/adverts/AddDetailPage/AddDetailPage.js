@@ -9,14 +9,8 @@ import { useHistory } from 'react-router';
 import './AddDetailPage.css';
 
 const AddDetailPage = ({...props}) => {
-  const [add, setAdd] = React.useState({
-    id:'',
-    createdAt: '',
-    name: '',
-    sale: '',
-    price: '',
-    tags: '',
-  });
+  const [add, setAdd] = React.useState(null);
+
   const addId = props.match.params.id;
   const baseUrl = process.env.REACT_APP_API_BASE_URL;
   const [confirmation, setConfirmation] = React.useState(false);
@@ -37,7 +31,8 @@ const AddDetailPage = ({...props}) => {
   }, []);
     
   return (
-    
+    add && (
+
     <Layout title="Add on Detail" {...props}>
       <div className="add-detail-list-container">
         <div className="ad-detail">
@@ -76,6 +71,7 @@ const AddDetailPage = ({...props}) => {
         </div>
       </div>
     </Layout>
+    )
   );
 };
 
