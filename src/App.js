@@ -33,9 +33,12 @@ function App({ isInitiallyLogged }) {
         <PrivateRoute  isLogged={isLogged} path="/advert/:id">
             <AddDetailPage match={match} isLogged={isLogged} onLogout={handleLogout}/> 
         </PrivateRoute> 
-        <PrivateRoute isLogged={isLogged} exact path="/">
+        <PrivateRoute isLogged={isLogged} exact path="/adverts">     
           <AddListPage isLogged={isLogged} onLogout={handleLogout} />
         </PrivateRoute>
+        <Route exact path="/">
+          <Redirect to="/adverts" />
+        </Route>
         <Route path="/404">
           <Page404 isLogged={isLogged} onLogout={handleLogout} />
         </Route>
