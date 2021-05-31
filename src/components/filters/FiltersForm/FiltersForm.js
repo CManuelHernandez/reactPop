@@ -42,7 +42,7 @@ function FiltersForm({ beforeFilters, tags, onSubmit}) {
                 type={'text'}
                 name={'name'}
                 placeholder={'name'}
-                value={filters.name}
+                value={filters.name || ''}
                 onChange={handleFiltersForm}
             />
             <FormField 
@@ -50,7 +50,7 @@ function FiltersForm({ beforeFilters, tags, onSubmit}) {
                 type={'number'}
                 name={'minPrice'}
                 placeholder={'min price'}
-                value={filters.minPrice}
+                value={filters.minPrice || ''}
                 onChange={handleFiltersForm}
             />
             <FormField 
@@ -58,7 +58,7 @@ function FiltersForm({ beforeFilters, tags, onSubmit}) {
                 type={'number'}
                 name={'maxPrice'}
                 placeholder={'max price'}
-                value={filters.maxPrice}
+                value={filters.maxPrice || ''}
                 onChange={handleFiltersForm}
             />
             <Checkbox
@@ -66,7 +66,7 @@ function FiltersForm({ beforeFilters, tags, onSubmit}) {
                 type={'checkbox'}
                 text={'Sale'}
                 disabled={false}
-                checked={filters.sale}
+                checked={filters.sale || ''}
                 onChange={handleFiltersForm}
             />
             <Checkbox
@@ -74,7 +74,7 @@ function FiltersForm({ beforeFilters, tags, onSubmit}) {
                 type={'checkbox'}
                 text={'Purchase'}
                 disabled={false}
-                checked={filters.purchase}
+                checked={filters.purchase || ''}
                 onChange={handleFiltersForm}
             />
             <Select 

@@ -12,7 +12,7 @@ const CreateAddForm = ({ ...props }) => {
         photo: null,
     });
 
-const [onSaleValue, onSaleInputProps] = useRadioButtons('sale');
+// const [onSaleValue, onSaleInputProps] = useRadioButtons('sale');
 
 const [tags, setTags] = React.useState([]);
   React.useEffect(() => {
@@ -23,21 +23,20 @@ const [tags, setTags] = React.useState([]);
   getTagList();
 }, []);
 
-  const handleChange = (event) => {
-    setInputValues( oldValue => {
-      const newValue = event.target ?
-      {
-      ...oldValue,
-      [event.target.name]: event.target.value,
-      } :
-      {
-      ...oldValue,
-      tags: event.length ? event : ''
-      }
+const handleChange = (event) => {
+  let value = event.target.value;
 
-      return newValue;
-  });
-  };
+  if (value === 'true') {
+    value = true;
+  } else if (value === 'false') {
+    value = false;
+  }
+
+  setInputValues((oldValues) => ({
+    ...oldValues,
+    [event.target.name]: value,
+  }));
+};
 
   const handleSelect = (selectedItems) => {
     const tags = [];
@@ -99,18 +98,21 @@ const [tags, setTags] = React.useState([]);
         <label>
           Selling
           <input
-            name="onSaleAdd"
+            type='radio'
+            name="sale"
             value={true}
-            {...onSaleInputProps}
+            checked={true}
+            // {...onSaleInputProps}
             onChange={handleChange}
           />
         </label>
         <label>
           For Purchase
           <input
-            name="buyAdd"
-            value={false}
-            {...onSaleInputProps}
+            type='radio'
+            name="sale"
+            value={false}     
+            // {...onSaleInputProps}
             onChange={handleChange}
           />
         </label>
@@ -142,7 +144,12 @@ const [tags, setTags] = React.useState([]);
       <Button 
         className="form-button" 
         onClick={handleSubmit}
-        disabled={ !inputValues.name || !inputValues.price } 
+        disabled={ 
+          !inputValues.name || 
+          inputValues.price < 0 || 
+          !inputValues.price || 
+          !inputValues.tags.length
+        } 
       >
         Publish
       </Button>
@@ -150,21 +157,21 @@ const [tags, setTags] = React.useState([]);
   );
 };
 
-function useRadioButtons(name) {
-    const [value, setState] = React.useState(null);
+// function useRadioButtons(name) {
+//     const [value, setState] = React.useState(null);
   
-    const handleChange = (event) => {
-      setState(event.target.value);
-    };
+//     const handleChange = (event) => {
+//       setState(event.target.value);
+//     };
   
-    const inputProps = {
-      name,
-      type: 'radio',
-      onChange: handleChange,
-    };
+//     const inputProps = {
+//       name,
+//       type: 'radio',
+//       onChange: handleChange,
+//     };
   
-    return [value, inputProps];
-};
+//     return [value, inputProps];
+// };
 
 
 export default CreateAddForm;
