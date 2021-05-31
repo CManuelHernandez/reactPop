@@ -14,7 +14,7 @@ function LoginForm({ onSubmit, isLoading }) {
     const handleChange = event => {
       setCredentials(oldCredentials => ({
         ...oldCredentials,
-        [event.target.name]: event.target.type === 'remember' 
+        [event.target.name]: event.target.type === 'checkbox' 
         ? 
         event.target.checked : event.target.value
         }));
