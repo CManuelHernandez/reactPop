@@ -13,10 +13,7 @@ const CreateNewAddPage = ({...props}) => {
     try {
       const {id} = await createAdd(newAddData);
       history.push(`/advert/${id}`);
-      // history.push('/');
-      console.log('id',id)
     } catch (error) {
-      console.error(error);
     }
     console.log('newAddData',newAddData)
   };
