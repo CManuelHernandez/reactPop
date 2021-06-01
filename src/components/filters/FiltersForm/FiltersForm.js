@@ -81,6 +81,7 @@ function FiltersForm({ beforeFilters, tags, onSubmit}) {
                 tags={tags}
                 name={'tags'}
                 multiple
+                value={beforeFilters.tags}
                 onChange={handleFiltersForm}
             />
             <Button>Apply filters for the Adds</Button>

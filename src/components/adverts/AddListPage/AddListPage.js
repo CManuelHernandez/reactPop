@@ -27,15 +27,17 @@ const EmptyList = () => {
 
     const [addList, setAddList] = React.useState([]);
     const [tags, setTags] = React.useState([]);
-
-    const beforeFilters = {
+    
+    const [beforeFilters, setBeforeFilters] = React.useState([
+      {
         name: '',
-        minPrice: null,
-        maxPrice: null,
+        minPrice: 0,
+        maxPrice: 5000,
         sale: false,
         purchase: false,
         tags: []
-    };
+      }
+    ])
 
     const getAdds = (filters) => {
         return getAddList(filters).then(adverts => {
@@ -62,7 +64,7 @@ const EmptyList = () => {
     React.useEffect(() => {
         getAdds(beforeFilters).then(setAddList);
         getTags().then(setTags);
-    }, []);    
+    }, []);   
 
     return (
       <Layout title="React-Pop" {...props}>
