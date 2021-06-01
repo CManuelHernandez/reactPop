@@ -24,7 +24,7 @@ export const createAdd = (add) => {
   return (
     client
       .post(url, formData)
-      .then((data) => console.log('add image:', data.photo))
+      .then((data) => data)
       .catch((error) => console.error(error))
   );
 };

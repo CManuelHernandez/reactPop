@@ -9,14 +9,18 @@ import { useHistory } from 'react-router';
 const CreateNewAddPage = ({...props}) => {
   const history = useHistory();
 
-  const handleSubmit = (newAddData) => {
+  const handleSubmit = async (newAddData) => {
     try {
-      createAdd(newAddData);
-      history.push('/');
+      const {id} = await createAdd(newAddData);
+      history.push(`/advert/${id}`);
+      // history.push('/');
+      console.log('id',id)
     } catch (error) {
       console.error(error);
     }
+    console.log('newAddData',newAddData)
   };
+  
 
   return (
     <div>
