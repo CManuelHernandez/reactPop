@@ -12,8 +12,6 @@ const CreateAddForm = ({ ...props }) => {
         photo: null,
     });
 
-// const [onSaleValue, onSaleInputProps] = useRadioButtons('sale');
-
 const [tags, setTags] = React.useState([]);
   React.useEffect(() => {
     const getTagList = async () => {
@@ -101,8 +99,7 @@ const handleChange = (event) => {
             type='radio'
             name="sale"
             value={true}
-            checked={true}
-            // {...onSaleInputProps}
+            checked={inputValues.sale === true}
             onChange={handleChange}
           />
         </label>
@@ -111,8 +108,8 @@ const handleChange = (event) => {
           <input
             type='radio'
             name="sale"
-            value={false}     
-            // {...onSaleInputProps}
+            value={false}
+            checked={inputValues.sale === false}     
             onChange={handleChange}
           />
         </label>
@@ -156,22 +153,5 @@ const handleChange = (event) => {
     </form>
   );
 };
-
-// function useRadioButtons(name) {
-//     const [value, setState] = React.useState(null);
-  
-//     const handleChange = (event) => {
-//       setState(event.target.value);
-//     };
-  
-//     const inputProps = {
-//       name,
-//       type: 'radio',
-//       onChange: handleChange,
-//     };
-  
-//     return [value, inputProps];
-// };
-
 
 export default CreateAddForm;
