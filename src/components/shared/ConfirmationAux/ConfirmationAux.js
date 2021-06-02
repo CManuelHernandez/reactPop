@@ -1,26 +1,24 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { deleteAdd } from '../../../api/adds';
 import Button from '.././Button';
 import './ConfirmationAux.css';
 
 const ConfirmationAux = (props) => {
-  const history = useHistory();
 
   const handleClickYes = async () => {
-    await deleteAdd(props.addId);
-    history.push('/');
+    props.onDisplayAux(true);
+    props.onConfirm(true);
   };
 
   const handleClickNo = () => {
-    props.setConfirmation((oldValue) => !oldValue);
+    props.onDisplayAux(false);
+    props.onConfirm(false);
   };
 
   return (
     <>
       <hr/>
       <div>
-        <p className="confirm-text">Are You sure you want to delete this Add</p>
+        <p>{props.confirmationText}</p>
         <Button
           onClick={handleClickYes}  
         >

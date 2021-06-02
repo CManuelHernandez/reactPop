@@ -1,5 +1,5 @@
 import React from 'react';
-import { getAdd } from '../../../api/adds';
+import { getAdd, deleteAdd } from '../../../api/adds';
 import Layout from '../../layout/Layout';
 import NoImg from '../../../assets/noimg.png';
 import Button from '../../shared/Button';
@@ -17,8 +17,17 @@ const AddDetailPage = ({...props}) => {
   const history = useHistory();
   
   const handleClickConfirmation = () => {
-    setConfirmation((oldValue) => !oldValue);
+    setConfirmation(!confirmation);
   };
+
+  const deleteAddConfirm = async (confirmDeletion) => {
+    if (confirmDeletion) {
+      await deleteAdd(addId);
+      history.push('/');
+    }
+  };
+
+
   React.useEffect(() => {
     getAdd(addId)
       .then((addvert) => setAdd(addvert))
@@ -64,8 +73,13 @@ const AddDetailPage = ({...props}) => {
           </Button>
             {confirmation && (
               <ConfirmationAux
-                addId={add.id} 
-                setConfirmation={setConfirmation} 
+                onDisplayAux={setConfirmation}
+                onConfirm={deleteAddConfirm}
+                confirmationText={
+                  <p className="confirm-text">
+                    Are You sure you want to delete this Add
+                  </p>
+              } 
               />
             )}
         </div>
