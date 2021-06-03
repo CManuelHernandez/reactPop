@@ -2,19 +2,13 @@ import React from 'react';
 
 function Checkbox({ className, text, ...props }) {
 
-    const [name, type, disabled, checked, onChange] = Object.values({...props});
-
     return (
         <label 
             className={className}
             
         >
             <input 
-                type={type}
-                disabled={disabled}
-                name={name}
-                checked={checked}
-                onChange={onChange}
+                {...props}
             />
             {text}
         </label>
